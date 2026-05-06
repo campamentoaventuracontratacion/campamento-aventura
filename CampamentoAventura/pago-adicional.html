@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Adicional - Campamento Aventura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #D4A373;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .form-pago {
+            background: #F4E4C1;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 10px 10px 0 #5c3a21;
+            border: 3px solid #8B5A2B;
+        }
+        h2 { color: #3d2a1a; text-align: center; }
+        p { text-align: center; color: #5c3a21; margin-bottom: 20px; }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #8B5A2B;
+            font-size: 16px;
+        }
+        button {
+            background: #3d2a1a;
+            color: #F4E4C1;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover { background: #5c3a21; }
+        #mensaje { text-align: center; margin-top: 15px; font-weight: bold; }
+        small { color: #5c3a21; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="form-pago">
+        <h2>💰 Pago Adicional</h2>
+        <p>Completá con los datos de tu reserva para identificar tu evento.</p>
+        <form id="formPago">
+            <label>📧 Email (el mismo de tu reserva) *</label>
+            <input type="email" name="email" required placeholder="tu@email.com">
+            
+            <label>🎂 Nombre del festejado *</label>
+            <input type="text" name="nombreFestejado" required placeholder="Nombre del cumpleañero/a">
+            
+            <label>📅 Fecha del evento *</label>
+            <input type="date" name="fechaEvento" required>
+            
+            <label>💵 Monto del nuevo pago *</label>
+            <input type="number" name="monto" required min="1" placeholder="Ej: 30000">
+            
+            <label>🧾 Comprobante *</label>
+            <input type="file" name="comprobante" accept="image/*,.pdf" required>
+            
+            <button type="submit">ENVIAR PAGO</button>
+        </form>
+        <div id="mensaje"></div>
+    </div>
+
+    <script>
+        const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbyegnLpOQZr6EEdNUaD2ZUEV14ftvtfqS6FcB2CKfqapbSgTXTwksLUilfoUH7CAjK3/exec";
+        
+        document.getElementById('formPago').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const mensaje = document.getElementById('mensaje');
+            mensaje.textContent = '⏳ Enviando...';
+            
+            const formData = new FormData(e.target);
+            
+            // Convertir archivo a base64
+            const fileInput = document.querySelector('[name="comprobante"]');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const base64 = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result.split(',')[1]);
+                    reader.readAsDataURL(file);
+                });
+                formData.set('comprobante', base64);
+                formData.set('comprobanteMimeType', file.type);
+                formData.set('comprobanteFilename', file.name);
+            }
+            
+            formData.append('origen', 'pagoAdicional');
+            
+            try {
+                // Enviar como URLSearchParams
+                const params = new URLSearchParams();
+                for (let [key, value] of formData.entries()) {
+                    params.append(key, value);
+                }
+                
+                const response = await fetch(URL_SCRIPT, {
+                    method: 'POST',
+                    body: params
+                });
+                
+                const data = await response.json();
+                
+                if (data.result === 'success') {
+                    mensaje.textContent = '✅ Pago enviado. Revisaremos tu comprobante y te notificaremos.';
+                    mensaje.style.color = '#2d4a22';
+                    e.target.reset();
+                } else {
+                    mensaje.textContent = '❌ ' + (data.message || 'Error del servidor');
+                    mensaje.style.color = '#a94442';
+                }
+            } catch (error) {
+                mensaje.textContent = '❌ Error: ' + error.message;
+                mensaje.style.color = '#a94442';
+            }
+        });
+    </script>
+</body>
+</html>
