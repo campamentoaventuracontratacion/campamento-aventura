@@ -23,11 +23,11 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .hero h1 { display: none; }
         .hero .aventura { font-size: 28px; letter-spacing: 2px; color: #3d2a1a; margin-bottom: 10px; text-shadow: 2px 2px 0 rgba(212, 163, 115, 0.5); }
-        .hero p { font-size: 16px; color: #2c1a0e; margin-bottom: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .hero p { font-size: 16px; color: #2c1a0e; margin-bottom: 20px; }
         .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
-        .btn-tesoro { background: #3d2a1a; color: #F4E4C1; border: none; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 0 #1a0f08; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-decoration: none; display: inline-block; }
+        .btn-tesoro { background: #3d2a1a; color: #F4E4C1; border: none; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 0 #1a0f08; text-decoration: none; display: inline-block; }
         .btn-tesoro:hover { background: #5c3a21; transform: translateY(-3px); box-shadow: 0 8px 0 #1a0f08; }
-        .btn-pago { background: #D4A373; color: #2c1a0e; border: none; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 0 #8B5A2B; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-decoration: none; display: inline-block; }
+        .btn-pago { background: #D4A373; color: #2c1a0e; border: none; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 0 #8B5A2B; text-decoration: none; display: inline-block; }
         .btn-pago:hover { background: #c48a5c; transform: translateY(-3px); box-shadow: 0 8px 0 #6b3f1f; }
         .section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
         .section-title { font-size: 48px; letter-spacing: 2px; color: #F4E4C1; text-shadow: 2px 2px 0 #2c1a0e; margin-bottom: 50px; text-align: center; text-transform: uppercase; }
@@ -37,7 +37,7 @@
         .aventura-icon { font-size: 70px; margin-bottom: 15px; display: inline-block; animation: float 3s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
         .aventura-card h3 { font-size: 28px; color: #3d2a1a; margin-bottom: 15px; }
-        .aventura-card p { color: #2c1a0e; line-height: 1.5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .aventura-card p { color: #2c1a0e; line-height: 1.5; }
         .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
         .galeria-item { background: #F4E4C1; border-radius: 20px; height: 250px; display: flex; align-items: center; justify-content: center; font-size: 60px; transition: 0.3s; cursor: pointer; border: 3px solid #D4A373; background-size: cover; background-position: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
         .galeria-item::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); transition: 0.3s; }
@@ -89,6 +89,7 @@
 </head>
 <body class="bg-aventura">
 <div class="container">
+
     <header>
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
             <div class="logo">CAMPAMENTO AVENTURA</div>
@@ -101,14 +102,24 @@
             </div>
         </div>
     </header>
-    <div id="lightbox" class="lightbox" onclick="cerrarLightbox()"><span class="lightbox-close" onclick="cerrarLightbox()">&times;</span><img id="lightbox-img" src="" alt="Imagen ampliada"></div>
-    <div class="floating-icons">
-        <a href="https://wa.me/5491234567890" class="whatsapp" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.2-17.1-41.4-4.5-10.9-9.1-9.4-12.5-9.6-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-4.9-3.9-9.9-6.6z"/></svg></a>
-        <a href="https://instagram.com/campamentoaventura" class="instagram" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="white"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+
+    <div id="lightbox" class="lightbox" onclick="cerrarLightbox()">
+        <span class="lightbox-close" onclick="cerrarLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Imagen ampliada">
     </div>
+
+    <div class="floating-icons">
+        <a href="https://wa.me/5491234567890?text=Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Campamento%20Aventura" class="whatsapp" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.2-17.1-41.4-4.5-10.9-9.1-9.4-12.5-9.6-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-4.9-3.9-9.9-6.6z"/></svg>
+        </a>
+        <a href="https://instagram.com/campamentoaventura" class="instagram" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="white"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+        </a>
+    </div>
+
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <h1 style="display:none;">CUMPLEAÑOS<br>FANTÁSTICOS</h1>
+            <h1 style="display: none;">CUMPLEAÑOS<br>FANTÁSTICOS</h1>
             <div class="aventura">CAMPAMENTO AVENTURA</div>
             <p>Cada cumpleaños es una aventura diferente. Búsqueda del tesoro, misterios, desafíos y mucha diversión.</p>
             <div class="hero-buttons">
@@ -117,17 +128,19 @@
             </div>
         </div>
     </section>
+
     <section class="section" id="galeria">
         <h2 class="section-title">GALERIA DE AVENTURAS</h2>
         <div class="galeria-grid">
-            <div class="galeria-item" style="background-image:url('images/CA2.png')" onclick="abrirLightbox('images/CA2.png')"></div>
-            <div class="galeria-item" style="background-image:url('images/CA3.png')" onclick="abrirLightbox('images/CA3.png')"></div>
-            <div class="galeria-item" style="background-image:url('images/CA4.png')" onclick="abrirLightbox('images/CA4.png')"></div>
-            <div class="galeria-item" style="background-image:url('images/CA5.png')" onclick="abrirLightbox('images/CA5.png')"></div>
-            <div class="galeria-item" style="background-image:url('images/CA6.png')" onclick="abrirLightbox('images/CA6.png')"></div>
-            <div class="galeria-item" style="background-image:url('images/CA7.png')" onclick="abrirLightbox('images/CA7.png')"></div>
+            <div class="galeria-item" style="background-image: url('images/CA2.png');" onclick="abrirLightbox('images/CA2.png')"></div>
+            <div class="galeria-item" style="background-image: url('images/CA3.png');" onclick="abrirLightbox('images/CA3.png')"></div>
+            <div class="galeria-item" style="background-image: url('images/CA4.png');" onclick="abrirLightbox('images/CA4.png')"></div>
+            <div class="galeria-item" style="background-image: url('images/CA5.png');" onclick="abrirLightbox('images/CA5.png')"></div>
+            <div class="galeria-item" style="background-image: url('images/CA6.png');" onclick="abrirLightbox('images/CA6.png')"></div>
+            <div class="galeria-item" style="background-image: url('images/CA7.png');" onclick="abrirLightbox('images/CA7.png')"></div>
         </div>
     </section>
+
     <section class="section" id="aventuras">
         <h2 class="section-title">MISTERIOS DEL CAMPAMENTO</h2>
         <div class="aventuras-grid">
@@ -137,63 +150,119 @@
             <div class="aventura-card"><div class="aventura-icon">💎</div><h3>Tesoro final</h3><p>Al final, todos reciben un cofre con sorpresas y regalos.</p></div>
         </div>
     </section>
+
     <section class="section" id="testimonios">
         <h2 class="section-title">TESOROS DE CLIENTES</h2>
-        <div class="carrusel-container"><div class="carrusel-track" id="carruselTrack"></div><button class="carrusel-btn prev" id="prevBtn">❮</button><button class="carrusel-btn next" id="nextBtn">❯</button></div>
+        <div class="carrusel-container">
+            <div class="carrusel-track" id="carruselTrack"></div>
+            <button class="carrusel-btn prev" id="prevBtn">❮</button>
+            <button class="carrusel-btn next" id="nextBtn">❯</button>
+        </div>
         <div class="puntos" id="puntos"></div>
-        <div style="text-align:center;margin-top:30px;"><button id="btnDejarTestimonio" style="background:#D4A373;color:#2c1a0e;padding:12px 30px;border:none;border-radius:50px;cursor:pointer;font-weight:bold;font-size:16px;">📝 Dejar testimonio</button></div>
+        <div style="text-align: center; margin-top: 30px;">
+            <button id="btnDejarTestimonio" style="background:#D4A373; color:#2c1a0e; padding:12px 30px; border:none; border-radius:50px; cursor:pointer; font-weight:bold; font-size:16px;">📝 Dejar testimonio</button>
+        </div>
     </section>
+
+    <!-- MODAL FORMULARIO DE RESERVA -->
     <div id="modalFormulario" class="modal">
-        <div class="modal-content"><div class="modal-close" id="cerrarModal">&times;</div>
-            <div class="form-container"><h2>⛺ PLANIFICÁ TU AVENTURA</h2>
+        <div class="modal-content">
+            <div class="modal-close" id="cerrarModal">&times;</div>
+            <div class="form-container">
+                <h2>⛺ PLANIFICÁ TU AVENTURA</h2>
                 <form id="form-aventura">
                     <input type="hidden" name="fechaReserva" id="fechaReserva">
-                    <div class="form-row"><div class="campo"><label>🎂 Nombre del Festejado <span class="required">*</span></label><input type="text" name="nombreFestejado" id="nombreFestejado" required></div><div class="campo"><label>🎈 Años a cumplir <span class="required">*</span></label><input type="number" name="aniosCumplir" min="1" max="16" required></div></div>
-                    <div class="form-row"><div class="campo"><label>📅 Fecha del evento <span class="required">*</span></label><input type="date" name="fechaEvento" required></div><div class="campo"><label>⏰ Hora de inicio <span class="required">*</span></label><input type="time" name="horaInicio" required></div><div class="campo"><label>⏳ Hora fin <span class="required">*</span></label><input type="time" name="horaFin" required></div></div>
+                    <div class="form-row">
+                        <div class="campo"><label>🎂 Nombre del Festejado <span class="required">*</span></label><input type="text" name="nombreFestejado" id="nombreFestejado" required></div>
+                        <div class="campo"><label>🎈 Años a cumplir <span class="required">*</span></label><input type="number" name="aniosCumplir" min="1" max="16" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="campo"><label>📅 Fecha del evento <span class="required">*</span></label><input type="date" name="fechaEvento" required></div>
+                        <div class="campo"><label>⏰ Hora de inicio <span class="required">*</span></label><input type="time" name="horaInicio" required></div>
+                        <div class="campo"><label>⏳ Hora fin <span class="required">*</span></label><input type="time" name="horaFin" required></div>
+                    </div>
                     <div class="campo"><label>🏫 Colegio al que asiste <span class="required">*</span></label><input type="text" name="colegio" required></div>
-                    <div class="form-row"><div class="campo"><label>👤 Tutor 1 (obligatorio) <span class="required">*</span></label><input type="text" name="tutor1" required></div><div class="campo"><label>👤 Tutor 2 (opcional)</label><input type="text" name="tutor2"></div></div>
+                    <div class="form-row">
+                        <div class="campo"><label>👤 Tutor 1 (obligatorio) <span class="required">*</span></label><input type="text" name="tutor1" required></div>
+                        <div class="campo"><label>👤 Tutor 2 (opcional)</label><input type="text" name="tutor2"></div>
+                    </div>
                     <div class="campo"><label>📧 Email <span class="required">*</span></label><input type="email" name="Email" required><small>Te enviaremos la confirmación a este email</small></div>
-                    <div class="form-row"><div class="campo"><label>📞 Teléfono 1 (obligatorio) <span class="required">*</span></label><input type="tel" name="telefono1" required></div><div class="campo"><label>📞 Teléfono 2 (opcional)</label><input type="tel" name="telefono2"></div></div>
+                    <div class="form-row">
+                        <div class="campo"><label>📞 Teléfono 1 (obligatorio) <span class="required">*</span></label><input type="tel" name="telefono1" required></div>
+                        <div class="campo"><label>📞 Teléfono 2 (opcional)</label><input type="tel" name="telefono2"></div>
+                    </div>
                     <div class="campo"><label>🏠 Domicilio <span class="required">*</span></label><input type="text" name="domicilio" required></div>
                     <input type="hidden" name="valorAventura" id="valorAventura" value="0">
                     <div class="campo"><label>💰 Seña (mínimo $50.000 ARS) <span class="required">*</span></label><input type="number" name="sena" id="sena" min="50000" step="1000" required><small>Ingresá el monto que abonaste como seña</small></div>
                     <div class="campo"><label>🧾 Comprobante de pago (foto/PDF) <span class="required">*</span></label><input type="file" name="comprobante" id="comprobante" accept="image/*,.pdf" required></div>
-                    <div class="campo-condicional"><p style="font-weight:bold;margin-bottom:0.8rem;">✨ Para que <span id="nombreFestejadoSpan1">[Nombre]</span> tenga una excelente Aventura, es importante la siguiente información:</p><div class="campo"><label>1. ¿Asistió a alguna Aventura en nuestro Campamento? <span class="required">*</span></label><select name="asistioAntes" id="asistioAntes" required><option value="">Seleccioná una opción</option><option value="no">No</option><option value="si">Sí</option></select></div><div id="camposAsistio" style="display:none;margin-top:1rem;"><div class="form-row"><div class="campo"><label>Nombre del cumpleañero de esa fiesta <span class="required">*</span></label><input type="text" name="nombreFiestaAnterior" id="nombreFiestaAnterior"></div><div class="campo"><label>Fecha aproximada <span class="required">*</span></label><input type="text" name="fechaAproxAnterior" id="fechaAproxAnterior" placeholder="Ej: Marzo 2025"></div></div></div></div>
-                    <div class="campo-condicional"><p style="font-weight:bold;">🍽️ Para nosotros es importante que toda la tropa de <span id="nombreFestejadoSpan2">[Nombre]</span> disfrute de nuestros manjares. ¿Algún aventurero tiene requerimientos especiales en su alimentación?</p><div class="campo"><select name="requerimientosAlimenticios" id="requerimientosAlimenticios" required><option value="">Seleccioná una opción</option><option value="no">No</option><option value="si">Sí</option></select></div><div id="camposAlimenticios" style="display:none;margin-top:1rem;"><div class="checkbox-group"><label><input type="checkbox" name="alergiaCeliaco" value="Celiaco/Alérgico"> Celiaco / Alérgico</label><label><input type="checkbox" name="alergiaOtro" value="Otro" id="checkOtroAlergia"> Otro</label></div><div id="campoOtroAlergia" style="display:none;margin-top:0.8rem;"><input type="text" name="alergiaOtroDetalle" placeholder="Especificar..."></div></div></div>
-                    <div class="campo-condicional"><div class="form-row"><div class="campo"><label>🧒 ¿Cuántos aventureros acompañan a <span id="nombreFestejadoSpanNinos">[Nombre]</span>? <span class="required">*</span></label><input type="number" name="cantidadNinos" min="1" max="35" required><small>Máximo 35 niños</small></div><div class="campo"><label>👨‍👩‍👧 ¿Cuántos adultos acompañan a <span id="nombreFestejadoSpanAdultos">[Nombre]</span>? <span class="required">*</span></label><input type="number" name="cantidadAdultos" min="0" max="5" required><small>Máximo 5 adultos</small></div></div></div>
-                    <div class="campo-condicional"><div class="campo"><label>📸 Opcionales adicionales</label><select name="opcionalFotografo"><option value="">Ninguno</option><option value="Fotógrafo">Fotógrafo profesional</option></select></div></div>
-                    <div class="campo-condicional"><label style="font-weight:bold;">📜 Términos y Condiciones <span class="required">*</span></label><div class="terminos-recuadro"><p><strong>Campamento Aventura</strong></p><p>Última actualización: Abril 2026</p><h3>1. Reserva y Seña</h3><p>• Para confirmar la reserva se debe abonar una seña.</p><h3>2. Horarios</h3><p>• El horario contratado debe respetarse.</p><h3>3. Contacto</h3><p>📞 1234-5678 | 📧 info@campamentoaventura.com</p></div><div style="display:flex;align-items:flex-start;gap:10px;margin-top:20px;"><input type="checkbox" id="aceptoTerminos" required style="width:20px;height:20px;margin-top:3px;cursor:pointer;"><label for="aceptoTerminos" style="font-weight:normal;cursor:pointer;">He leído y acepto los Términos y Condiciones <span class="required">*</span></label></div><small style="color:#5c3a21;display:block;margin-top:5px;">Debés aceptar los términos para enviar la reserva.</small></div>
-                    <div style="margin-top:1.5rem;"><button type="submit" class="btn-enviar" id="btnEnviar">⛺ ENVIAR RESERVA</button></div>
+                    <div class="campo-condicional">
+                        <p style="font-weight: bold; margin-bottom: 0.8rem;">✨ Para que <span id="nombreFestejadoSpan1">[Nombre]</span> tenga una excelente Aventura...</p>
+                        <div class="campo"><label>1. ¿Asistió a alguna Aventura? <span class="required">*</span></label><select name="asistioAntes" id="asistioAntes" required><option value="">Seleccioná</option><option value="no">No</option><option value="si">Sí</option></select></div>
+                        <div id="camposAsistio" style="display: none; margin-top: 1rem;"><div class="form-row"><div class="campo"><label>Nombre del cumpleañero <span class="required">*</span></label><input type="text" name="nombreFiestaAnterior" id="nombreFiestaAnterior"></div><div class="campo"><label>Fecha aproximada <span class="required">*</span></label><input type="text" name="fechaAproxAnterior" id="fechaAproxAnterior" placeholder="Ej: Marzo 2025"></div></div></div>
+                    </div>
+                    <div class="campo-condicional">
+                        <p style="font-weight: bold;">🍽️ ¿Requerimientos alimenticios?</p>
+                        <div class="campo"><select name="requerimientosAlimenticios" id="requerimientosAlimenticios" required><option value="">Seleccioná</option><option value="no">No</option><option value="si">Sí</option></select></div>
+                        <div id="camposAlimenticios" style="display: none; margin-top: 1rem;"><div class="checkbox-group"><label><input type="checkbox" name="alergiaCeliaco" value="Celiaco/Alérgico"> Celiaco / Alérgico</label><label><input type="checkbox" name="alergiaOtro" value="Otro" id="checkOtroAlergia"> Otro</label></div><div id="campoOtroAlergia" style="display: none; margin-top: 0.8rem;"><input type="text" name="alergiaOtroDetalle" placeholder="Especificar..."></div></div>
+                    </div>
+                    <div class="campo-condicional"><div class="form-row"><div class="campo"><label>🧒 Aventureros <span class="required">*</span></label><input type="number" name="cantidadNinos" min="1" max="35" required></div><div class="campo"><label>👨‍👩‍👧 Adultos <span class="required">*</span></label><input type="number" name="cantidadAdultos" min="0" max="5" required></div></div></div>
+                    <div class="campo-condicional"><div class="campo"><label>📸 Opcionales</label><select name="opcionalFotografo"><option value="">Ninguno</option><option value="Fotógrafo">Fotógrafo</option></select></div></div>
+                    <div class="campo-condicional">
+                        <label>📜 Términos <span class="required">*</span></label>
+                        <div class="terminos-recuadro"><p><strong>Campamento Aventura</strong></p><p>Abril 2026</p><p>1. Seña mínima $50.000</p><p>2. Respetar horarios</p></div>
+                        <div style="display:flex;align-items:center;gap:10px;margin-top:15px;"><input type="checkbox" id="aceptoTerminos" required> <label for="aceptoTerminos">Acepto los Términos y Condiciones <span class="required">*</span></label></div>
+                    </div>
+                    <button type="submit" class="btn-enviar" style="margin-top:1.5rem;">⛺ ENVIAR RESERVA</button>
                     <div id="mensajeEnvio" style="margin-top:15px;text-align:center;font-weight:bold;"></div>
-                </form></div></div></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE TESTIMONIO (YA EXISTENTE) -->
     <div id="modalTestimonio" class="modal">
-        <div class="modal-content"><div class="modal-close" id="cerrarTestimonio">&times;</div>
-            <div class="form-container"><h2>📝 Dejá tu testimonio</h2>
+        <div class="modal-content">
+            <div class="modal-close" id="cerrarTestimonio">&times;</div>
+            <div class="form-container">
+                <h2>Dejá tu testimonio</h2>
                 <form id="formTestimonio">
                     <div class="campo"><label>Tu nombre *</label><input type="text" id="testNombre" required></div>
-                    <div class="campo"><label>Calificación *</label><select id="testCalificacion" required><option value="⭐⭐⭐⭐⭐" selected>⭐⭐⭐⭐⭐ (Excelente)</option><option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (Muy bueno)</option><option value="⭐⭐⭐">⭐⭐⭐ (Bueno)</option><option value="⭐⭐">⭐⭐ (Regular)</option><option value="⭐">⭐ (Malo)</option></select></div>
-                    <div class="campo"><label>Tu comentario *</label><textarea id="testComentario" rows="4" required placeholder="Contanos tu experiencia..."></textarea></div>
+                    <div class="campo"><label>Calificación</label><select id="testCalificacion" required><option value="⭐">⭐ (Malo)</option><option value="⭐⭐">⭐⭐ (Regular)</option><option value="⭐⭐⭐">⭐⭐⭐ (Bueno)</option><option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (Muy bueno)</option><option value="⭐⭐⭐⭐⭐" selected>⭐⭐⭐⭐⭐ (Excelente)</option></select></div>
+                    <div class="campo"><label>Tu comentario *</label><textarea id="testComentario" rows="4" required placeholder="Contanos tu experiencia en Campamento Aventura..."></textarea></div>
                     <button type="submit" class="btn-enviar">ENVIAR TESTIMONIO</button>
-                </form><div id="mensajeTestimonio" style="margin-top:15px;text-align:center;font-weight:bold;"></div></div></div></div>
-    <footer><p>CAMPAMENTO AVENTURA - DONDE CADA CUMPLEAÑOS ES UNA GRAN AVENTURA</p><p>📞 1234-5678 | 📧 info@campamentoaventura.com</p><p style="margin-top:15px;">&copy; 2025 Campamento Aventura - Todos los derechos reservados</p></footer>
+                    <div id="mensajeTestimonio" style="margin-top:15px;text-align:center;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>CAMPAMENTO AVENTURA - DONDE CADA CUMPLEAÑOS ES UNA GRAN AVENTURA</p>
+        <p>📞 1234-5678 | 📧 info@campamentoaventura.com</p>
+        <p style="margin-top: 15px;">&copy; 2025 Campamento Aventura - Todos los derechos reservados</p>
+    </footer>
 </div>
+
 <script>
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbyegnLpOQZr6EEdNUaD2ZUEV14ftvtfqS6FcB2CKfqapbSgTXTwksLUilfoUH7CAjK3/exec";
+    
     const fechaReservaInput = document.getElementById('fechaReserva');
     const hoy = new Date(); const año = hoy.getFullYear(); const mes = String(hoy.getMonth()+1).padStart(2,'0'); const dia = String(hoy.getDate()).padStart(2,'0');
     if(fechaReservaInput) fechaReservaInput.value = `${año}-${mes}-${dia}`;
+
     const nombreFestejado = document.getElementById('nombreFestejado');
     const spanNombre1 = document.getElementById('nombreFestejadoSpan1'); const spanNombre2 = document.getElementById('nombreFestejadoSpan2');
     const spanNombreNinos = document.getElementById('nombreFestejadoSpanNinos'); const spanNombreAdultos = document.getElementById('nombreFestejadoSpanAdultos');
     function actualizarNombres(){ const n = nombreFestejado ? (nombreFestejado.value.trim()||'[Nombre]') : '[Nombre]'; if(spanNombre1) spanNombre1.textContent=n; if(spanNombre2) spanNombre2.textContent=n; if(spanNombreNinos) spanNombreNinos.textContent=n; if(spanNombreAdultos) spanNombreAdultos.textContent=n; }
     if(nombreFestejado){ nombreFestejado.addEventListener('input',actualizarNombres); actualizarNombres(); }
+
     const asistioSelect = document.getElementById('asistioAntes'); const camposAsistio = document.getElementById('camposAsistio');
-    const nombreFiestaAnterior = document.getElementById('nombreFiestaAnterior'); const fechaAproxAnterior = document.getElementById('fechaAproxAnterior');
-    if(asistioSelect){ asistioSelect.addEventListener('change',function(){ const m = this.value==='si'; camposAsistio.style.display=m?'block':'none'; if(nombreFiestaAnterior) nombreFiestaAnterior.required=m; if(fechaAproxAnterior) fechaAproxAnterior.required=m; }); }
+    if(asistioSelect){ asistioSelect.addEventListener('change',function(){ const m = this.value==='si'; camposAsistio.style.display=m?'block':'none'; }); }
     const reqSelect = document.getElementById('requerimientosAlimenticios'); const camposAlimenticios = document.getElementById('camposAlimenticios');
     if(reqSelect){ reqSelect.addEventListener('change',function(){ camposAlimenticios.style.display=this.value==='si'?'block':'none'; }); }
     const checkOtro = document.getElementById('checkOtroAlergia'); const campoOtro = document.getElementById('campoOtroAlergia');
     if(checkOtro){ checkOtro.addEventListener('change',function(){ campoOtro.style.display=this.checked?'block':'none'; }); }
+
     const form = document.getElementById('form-aventura'); const mensaje = document.getElementById('mensajeEnvio');
     if(form){ form.addEventListener('submit',async function(e){ e.preventDefault();
         const sena = parseInt(document.getElementById('sena')?.value,10); if(sena<50000){ mensaje.textContent='❌ La seña debe ser de al menos $50.000.'; mensaje.style.color='#a94442'; return; }
@@ -201,30 +270,99 @@
         mensaje.textContent='⏳ Enviando solicitud...'; mensaje.style.color='#5c3a21';
         const datos = { fechaReserva:document.getElementById('fechaReserva').value, nombreFestejado:nombreFestejado.value, aniosCumplir:document.querySelector('[name="aniosCumplir"]').value, fechaEvento:document.querySelector('[name="fechaEvento"]').value, horaInicio:document.querySelector('[name="horaInicio"]').value, horaFin:document.querySelector('[name="horaFin"]').value, colegio:document.querySelector('[name="colegio"]').value, tutor1:document.querySelector('[name="tutor1"]').value, tutor2:document.querySelector('[name="tutor2"]').value, Email:document.querySelector('[name="Email"]').value, telefono1:document.querySelector('[name="telefono1"]').value, telefono2:document.querySelector('[name="telefono2"]').value, domicilio:document.querySelector('[name="domicilio"]').value, valorAventura:document.getElementById('valorAventura').value, sena:sena, asistioAntes:asistioSelect.value, nombreFiestaAnterior:document.querySelector('[name="nombreFiestaAnterior"]').value, fechaAproxAnterior:document.querySelector('[name="fechaAproxAnterior"]').value, requerimientosAlimenticios:reqSelect.value, alergiaCeliaco:document.querySelector('[name="alergiaCeliaco"]')?.checked?'Sí':'No', alergiaOtro:document.querySelector('[name="alergiaOtro"]')?.checked?'Sí':'No', alergiaOtroDetalle:document.querySelector('[name="alergiaOtroDetalle"]')?.value||'', cantidadNinos:document.querySelector('[name="cantidadNinos"]').value, cantidadAdultos:document.querySelector('[name="cantidadAdultos"]').value, opcionalFotografo:document.querySelector('[name="opcionalFotografo"]').value };
         const fi = document.getElementById('comprobante'); if(fi&&fi.files.length>0){ const f=fi.files[0]; const b64=await new Promise(r=>{ const rd=new FileReader(); rd.onload=e=>r(e.target.result.split(',')[1]); rd.readAsDataURL(f); }); datos.comprobante=b64; datos.comprobanteFilename=f.name; datos.comprobanteMimeType=f.type; } else { datos.comprobante=''; datos.comprobanteFilename=''; datos.comprobanteMimeType=''; }
-        try { await fetch(URL_SCRIPT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(datos)}); mensaje.textContent='✅ ¡Reserva enviada con éxito! Te contactaremos pronto.'; mensaje.style.color='#2d4a22'; form.reset(); actualizarNombres(); document.getElementById('aceptoTerminos').checked=false; if(camposAsistio) camposAsistio.style.display='none'; if(camposAlimenticios) camposAlimenticios.style.display='none'; if(campoOtro) campoOtro.style.display='none'; setTimeout(()=>{document.getElementById('modalFormulario').style.display='none';document.body.style.overflow='auto';},2500); } catch(error){ mensaje.textContent='❌ Error: '+error.message; mensaje.style.color='#a94442'; } }); }
-    // TESTIMONIOS
-    let testimonios=[], currentIndex=0, autoInterval;
-    async function cargarTestimonios(){ try{ const r=await fetch(URL_SCRIPT+'?action=testimonios'); const d=await r.json(); if(d.success&&d.testimonios.length>0){ testimonios=d.testimonios; } else { testimonios=[]; } renderCarrusel(); iniciarAuto(); } catch(e){ testimonios=[]; renderCarrusel(); } }
-    function renderCarrusel(){ const t=document.getElementById('carruselTrack'), p=document.getElementById('puntos'); if(!t)return; t.innerHTML=''; p.innerHTML=''; if(testimonios.length===0){ t.innerHTML='<div class="testimonio-card"><p>¡Sé el primero en dejar tu testimonio!</p><div class="autor">- Campamento Aventura -</div></div>'; return; }
-        testimonios.forEach((tm,i)=>{ const d=document.createElement('div'); d.className='testimonio-card'; const ft=tm.fecha?new Date(tm.fecha).toLocaleDateString():''; d.innerHTML=`<p>${tm.comentario}</p><div class="calificacion">${tm.calificacion||"⭐⭐⭐⭐⭐"}</div><div class="autor">- ${tm.nombre} -</div><div class="fecha">${ft}</div>`; t.appendChild(d); const pt=document.createElement('div'); pt.className='punto'; pt.onclick=()=>irTestimonio(i); p.appendChild(pt); }); actualizarPuntos(); irTestimonio(0); }
-    function actualizarPuntos(){ document.querySelectorAll('.punto').forEach((pt,i)=>{ pt.classList.toggle('activo',i===currentIndex); }); }
-    function irTestimonio(i){ if(testimonios.length===0)return; currentIndex=(i+testimonios.length)%testimonios.length; const t=document.getElementById('carruselTrack'); if(t) t.style.transform=`translateX(-${currentIndex*100}%)`; actualizarPuntos(); reiniciarAuto(); }
-    function siguiente(){ irTestimonio(currentIndex+1); } function anterior(){ irTestimonio(currentIndex-1); }
-    function iniciarAuto(){ if(autoInterval)clearInterval(autoInterval); if(testimonios.length>0) autoInterval=setInterval(siguiente,5000); }
-    function reiniciarAuto(){ if(autoInterval)clearInterval(autoInterval); if(testimonios.length>0) autoInterval=setInterval(siguiente,5000); }
-    document.getElementById('prevBtn')?.addEventListener('click',anterior); document.getElementById('nextBtn')?.addEventListener('click',siguiente);
+        try { await fetch(URL_SCRIPT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(datos)}); mensaje.textContent='✅ ¡Reserva enviada con éxito!'; mensaje.style.color='#2d4a22'; form.reset(); actualizarNombres(); document.getElementById('aceptoTerminos').checked=false; setTimeout(()=>{document.getElementById('modalFormulario').style.display='none';document.body.style.overflow='auto';},2500); } catch(error){ mensaje.textContent='❌ Error: '+error.message; mensaje.style.color='#a94442'; } }); }
+
+    // =========================================
+    // TESTIMONIOS DINÁMICOS
+    // =========================================
+    let testimonios = [], currentIndex = 0, autoInterval;
+
+    async function cargarTestimonios() {
+        try {
+            const response = await fetch(URL_SCRIPT + '?action=testimonios');
+            const data = await response.json();
+            if (data.success && data.testimonios.length > 0) {
+                testimonios = data.testimonios;
+            } else {
+                testimonios = [];
+            }
+            renderCarrusel();
+            iniciarAuto();
+        } catch (error) {
+            testimonios = [];
+            renderCarrusel();
+        }
+    }
+
+    function renderCarrusel() {
+        const track = document.getElementById('carruselTrack');
+        const puntos = document.getElementById('puntos');
+        if (!track) return;
+        track.innerHTML = '';
+        puntos.innerHTML = '';
+        if (testimonios.length === 0) {
+            track.innerHTML = '<div class="testimonio-card"><p>¡Sé el primero en dejar tu testimonio!</p><div class="autor">- Campamento Aventura -</div></div>';
+            return;
+        }
+        testimonios.forEach((t, i) => {
+            const div = document.createElement('div');
+            div.className = 'testimonio-card';
+            const fechaTexto = t.fecha ? new Date(t.fecha).toLocaleDateString() : '';
+            div.innerHTML = `<p>${t.comentario}</p><div class="calificacion">${t.calificacion || "⭐⭐⭐⭐⭐"}</div><div class="autor">- ${t.nombre} -</div><div class="fecha">${fechaTexto}</div>`;
+            track.appendChild(div);
+            const punto = document.createElement('div');
+            punto.className = 'punto';
+            punto.onclick = () => irTestimonio(i);
+            puntos.appendChild(punto);
+        });
+        actualizarPuntos();
+        irTestimonio(0);
+    }
+
+    function actualizarPuntos() { document.querySelectorAll('.punto').forEach((p, i) => { p.classList.toggle('activo', i === currentIndex); }); }
+    function irTestimonio(index) { if (testimonios.length === 0) return; currentIndex = (index + testimonios.length) % testimonios.length; const track = document.getElementById('carruselTrack'); if (track) track.style.transform = `translateX(-${currentIndex * 100}%)`; actualizarPuntos(); reiniciarAuto(); }
+    function siguiente() { irTestimonio(currentIndex + 1); }
+    function anterior() { irTestimonio(currentIndex - 1); }
+    function iniciarAuto() { if (autoInterval) clearInterval(autoInterval); if (testimonios.length > 0) autoInterval = setInterval(siguiente, 5000); }
+    function reiniciarAuto() { if (autoInterval) clearInterval(autoInterval); if (testimonios.length > 0) autoInterval = setInterval(siguiente, 5000); }
+
+    document.getElementById('prevBtn')?.addEventListener('click', anterior);
+    document.getElementById('nextBtn')?.addEventListener('click', siguiente);
+
     const modalTestimonio = document.getElementById('modalTestimonio');
-    document.getElementById('btnDejarTestimonio')?.addEventListener('click',()=>{ modalTestimonio.style.display='block'; document.body.style.overflow='hidden'; });
-    document.getElementById('cerrarTestimonio')?.addEventListener('click',()=>{ modalTestimonio.style.display='none'; document.body.style.overflow='auto'; });
-    document.getElementById('formTestimonio')?.addEventListener('submit',async(e)=>{ e.preventDefault(); const m=document.getElementById('mensajeTestimonio'); m.textContent='⏳ Enviando...'; const d=new URLSearchParams(); d.append('action','testimonio'); d.append('nombre',document.getElementById('testNombre').value); d.append('calificacion',document.getElementById('testCalificacion').value); d.append('comentario',document.getElementById('testComentario').value); try{ await fetch(URL_SCRIPT,{method:'POST',body:d}); m.textContent='✅ ¡Gracias por tu testimonio!'; document.getElementById('formTestimonio').reset(); setTimeout(()=>{ modalTestimonio.style.display='none'; document.body.style.overflow='auto'; cargarTestimonios(); },2000); } catch(err){ m.textContent='❌ Error'; } });
-    const modalContratar = document.getElementById('modalFormulario');
-    document.getElementById('btnContratarHero')?.addEventListener('click',()=>{ modalContratar.style.display='block'; document.body.style.overflow='hidden'; });
-    document.getElementById('btnContratarNav')?.addEventListener('click',()=>{ modalContratar.style.display='block'; document.body.style.overflow='hidden'; });
-    document.getElementById('cerrarModal')?.addEventListener('click',()=>{ modalContratar.style.display='none'; document.body.style.overflow='auto'; });
-    window.onclick=(e)=>{ if(e.target===modalContratar){ modalContratar.style.display='none'; document.body.style.overflow='auto'; } if(e.target===modalTestimonio){ modalTestimonio.style.display='none'; document.body.style.overflow='auto'; } };
-    function abrirLightbox(s){ document.getElementById('lightbox-img').src=s; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow='hidden'; }
-    function cerrarLightbox(){ document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow='auto'; }
+    document.getElementById('btnDejarTestimonio')?.addEventListener('click', () => { modalTestimonio.style.display = 'block'; document.body.style.overflow = 'hidden'; });
+    document.getElementById('cerrarTestimonio')?.addEventListener('click', () => { modalTestimonio.style.display = 'none'; document.body.style.overflow = 'auto'; });
+
+    document.getElementById('formTestimonio')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const mensajeTestimonio = document.getElementById('mensajeTestimonio');
+        mensajeTestimonio.textContent = '⏳ Enviando...';
+        const datos = new URLSearchParams();
+        datos.append('action', 'testimonio');
+        datos.append('nombre', document.getElementById('testNombre').value);
+        datos.append('calificacion', document.getElementById('testCalificacion').value);
+        datos.append('comentario', document.getElementById('testComentario').value);
+        try {
+            await fetch(URL_SCRIPT, { method: 'POST', body: datos });
+            mensajeTestimonio.textContent = '✅ ¡Gracias por tu testimonio!';
+            document.getElementById('formTestimonio').reset();
+            setTimeout(() => { modalTestimonio.style.display = 'none'; document.body.style.overflow = 'auto'; cargarTestimonios(); }, 2000);
+        } catch (error) { mensajeTestimonio.textContent = '❌ Error'; }
+    });
+
+    window.addEventListener('click', (e) => { if (e.target === modalTestimonio) { modalTestimonio.style.display = 'none'; document.body.style.overflow = 'auto'; } });
+
     cargarTestimonios();
+
+    // Modales y lightbox
+    const modalContratar = document.getElementById('modalFormulario');
+    document.getElementById('btnContratarHero')?.addEventListener('click', () => { modalContratar.style.display = 'block'; document.body.style.overflow = 'hidden'; });
+    document.getElementById('btnContratarNav')?.addEventListener('click', () => { modalContratar.style.display = 'block'; document.body.style.overflow = 'hidden'; });
+    document.getElementById('cerrarModal')?.addEventListener('click', () => { modalContratar.style.display = 'none'; document.body.style.overflow = 'auto'; });
+    window.onclick = (e) => { if (e.target === modalContratar) { modalContratar.style.display = 'none'; document.body.style.overflow = 'auto'; } };
+
+    function abrirLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function cerrarLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = 'auto'; }
 </script>
 </body>
 </html>
