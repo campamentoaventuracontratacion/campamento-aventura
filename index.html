@@ -61,7 +61,7 @@
         .punto { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #D4A373; margin: 0 5px; cursor: pointer; }
         .punto.activo { background: #3d2a1a; }
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; overflow-y: auto; padding: 20px; }
-        .modal-content { max-width: 700px; margin: 30px auto; background: #F4E4C1; border-radius: 40px 10px 40px 10px; position: relative; border: 4px solid #D4A373; }
+        .modal-content { max-width: 750px; margin: 30px auto; background: #F4E4C1; border-radius: 40px 10px 40px 10px; position: relative; border: 4px solid #D4A373; }
         .modal-close { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; background: #3d2a1a; color: #F4E4C1; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; }
         .form-container { padding: 40px; }
         .form-container h2 { font-size: 36px; color: #3d2a1a; text-align: center; margin-bottom: 20px; }
@@ -76,7 +76,42 @@
         .full-width { grid-column: span 2; }
         .campo-condicional { background: #f4e8d6; padding: 1.2rem; border-radius: 15px; margin-top: 1rem; }
         .campo small { color: #5c3a21; font-size: 0.8rem; }
-        .terminos-recuadro { background: #FFF8F0; border: 2px solid #D4A373; border-radius: 15px; padding: 15px; max-height: 200px; overflow-y: auto; font-size: 14px; line-height: 1.6; color: #2c1a0e; margin-top: 10px; text-align: left; }
+        
+        /* ESTILOS PARA TÉRMINOS Y CONDICIONES */
+        .terminos-recuadro {
+            background: #FFF8F0;
+            border: 3px solid #5c3a21;
+            border-radius: 15px;
+            padding: 20px;
+            max-height: 350px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #2c1a0e;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .terminos-recuadro h3 {
+            color: #3d2a1a;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 16px;
+            border-bottom: 2px solid #D4A373;
+            padding-bottom: 3px;
+        }
+        .terminos-recuadro strong {
+            color: #5c3a21;
+        }
+        .alerta-importante {
+            background: #ffe0e0;
+            border-left: 4px solid #a94442;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #a94442;
+        }
+        
         .floating-icons { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 15px; }
         .floating-icons a { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s; }
         .floating-icons a:hover { transform: scale(1.1); }
@@ -205,21 +240,83 @@
                         <div class="campo"><select name="requerimientosAlimenticios" id="requerimientosAlimenticios" required><option value="">Seleccioná</option><option value="no">No</option><option value="si">Sí</option></select></div>
                         <div id="camposAlimenticios" style="display: none; margin-top: 1rem;"><div class="checkbox-group"><label><input type="checkbox" name="alergiaCeliaco" value="Celiaco/Alérgico"> Celiaco / Alérgico</label><label><input type="checkbox" name="alergiaOtro" value="Otro" id="checkOtroAlergia"> Otro</label></div><div id="campoOtroAlergia" style="display: none; margin-top: 0.8rem;"><input type="text" name="alergiaOtroDetalle" placeholder="Especificar..."></div></div>
                     </div>
-                    <div class="campo-condicional"><div class="form-row"><div class="campo"><label>🧒 Aventureros <span class="required">*</span></label><input type="number" name="cantidadNinos" min="1" max="35" required></div><div class="campo"><label>👨‍👩‍👧 Adultos <span class="required">*</span></label><input type="number" name="cantidadAdultos" min="0" max="5" required></div></div></div>
+                    <div class="campo-condicional"><div class="form-row"><div class="campo"><label>🧒 Aventureros <span class="required">*</span></label><input type="number" name="cantidadNinos" min="1" max="35" required></div><div class="campo"><label>👨‍👩‍👧 Adultos <span class="required">*</span></label><input type="number" name="cantidadAdultos" min="0" max="12" required></div></div></div>
                     <div class="campo-condicional"><div class="campo"><label>📸 Opcionales</label><select name="opcionalFotografo"><option value="">Ninguno</option><option value="Fotógrafo">Fotógrafo</option></select></div></div>
-                    <div class="campo-condicional">
-                        <label>📜 Términos <span class="required">*</span></label>
-                        <div class="terminos-recuadro"><p><strong>Campamento Aventura</strong></p><p>Abril 2026</p><p>1. Seña mínima $50.000</p><p>2. Respetar horarios</p></div>
-                        <div style="display:flex;align-items:center;gap:10px;margin-top:15px;"><input type="checkbox" id="aceptoTerminos" required> <label for="aceptoTerminos">Acepto los Términos y Condiciones <span class="required">*</span></label></div>
+                    
+                    <!-- TÉRMINOS Y CONDICIONES -->
+                    <div class="campo-condicional" style="margin-top: 1.5rem;">
+                        <label style="font-weight: bold; font-size: 18px;">📜 Términos y Condiciones de Reserva <span class="required">*</span></label>
+                        <p style="font-size: 13px; color: #5c3a21; margin-bottom: 10px;">Al realizar una reserva en <strong>Campamento Aventura</strong>, el cliente acepta los siguientes términos y condiciones:</p>
+                        
+                        <div class="terminos-recuadro">
+                            <h3>1. Pago y saldo pendiente</h3>
+                            <p>• La reserva quedará confirmada mediante el pago acordado previamente.</p>
+                            <p>• El saldo restante y cualquier adicional contratado deberán abonarse una vez finalizada la expedición.</p>
+                            
+                            <h3>2. Capacidad máxima</h3>
+                            <p>• Hasta <strong>35 niños</strong></p>
+                            <p>• Hasta <strong>12 adultos</strong></p>
+                            <p>Por motivos de organización y seguridad, no se permitirá exceder dichos límites.</p>
+                            
+                            <h3>3. Duración y actividades</h3>
+                            <p>• La experiencia incluye una expedición recreativa de aproximadamente <strong>2 horas y 30 minutos</strong> de duración, con circuitos, puentes y laberintos especialmente diseñados para la aventura.</p>
+                            
+                            <h3>4. Servicio de comida y bebidas</h3>
+                            <p>Durante la actividad se ofrecerá a los aventureros:</p>
+                            <p>• Pizzas</p>
+                            <p>• Salchichas momia</p>
+                            <p>• Snacks salados</p>
+                            <p>• Bebidas</p>
+                            <p><strong>Importante:</strong> La comida únicamente será calentada en el establecimiento. No se elaboran alimentos en el lugar. Las pizzas deberán llegar previamente preparadas con sus ingredientes correspondientes.</p>
+                            
+                            <h3>5. Acompañamiento y seguridad</h3>
+                            <p>• Los participantes estarán acompañados durante todo el recorrido por <strong>guías exploradores capacitados</strong>.</p>
+                            <p>• Los adultos no podrán ingresar a las expediciones ni intervenir durante el recorrido, a fin de preservar la dinámica y seguridad de la actividad.</p>
+                            
+                            <h3>6. Sector infantil</h3>
+                            <p>• Los niños pequeños de entre <strong>3 y 5 años</strong> podrán permanecer en el sector de carpa cercano al área de adultos.</p>
+                            <p>• Se permitirá un máximo de <strong>3 niños pequeños</strong> por evento.</p>
+                            
+                            <h3>7. Política climática y comodidad</h3>
+                            <p>• <strong>Las actividades no se suspenden por lluvia</strong>, ya que Campamento Aventura es un espacio <strong>cerrado y climatizado</strong>, preparado para brindar comodidad tanto en verano como en invierno.</p>
+                            
+                            <div class="alerta-importante">
+                                ⚠️ <strong>POLÍTICA SOBRE ALCOHOL</strong><br>
+                                • En el establecimiento <strong>NO se vende alcohol</strong>.<br>
+                                • No está permitido el consumo excesivo de bebidas alcohólicas dentro del predio.<br>
+                                • Campamento Aventura se reserva el derecho de admisión y permanencia ante conductas inapropiadas que afecten el ambiente familiar y seguro del evento.
+                            </div>
+                            
+                            <h3>8. Responsabilidad por daños</h3>
+                            <p>• Toda rotura, daño o perjuicio ocasionado por invitados durante el evento será responsabilidad de la persona titular de la reserva, quien deberá asumir los costos correspondientes.</p>
+                            
+                            <h3>9. Modificaciones y cancelaciones</h3>
+                            <p>• Campamento Aventura se reserva el derecho de modificar, reprogramar o cancelar actividades únicamente por razones operativas, de seguridad o fuerza mayor, sin obligación de resarcimiento económico adicional.</p>
+                            
+                            <h3>10. Horarios</h3>
+                            <p>• El campamento abrirá sus puertas <strong>10 minutos antes</strong> del inicio de la expedición y cerrará <strong>15 minutos después</strong> de finalizada la actividad.</p>
+                            
+                            <h3>11. Aceptación</h3>
+                            <p>• Al confirmar la reserva, el cliente declara haber leído y aceptado los presentes términos y condiciones.</p>
+                        </div>
+                        
+                        <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 20px; background: #f4e8d6; padding: 15px; border-radius: 10px;">
+                            <input type="checkbox" id="aceptoTerminos" required style="width: 22px; height: 22px; margin-top: 2px; cursor: pointer; accent-color: #3d2a1a;">
+                            <label for="aceptoTerminos" style="font-weight: bold; cursor: pointer; color: #3d2a1a; font-size: 15px;">
+                                ✅ He leído y acepto los Términos y Condiciones <span class="required">*</span>
+                            </label>
+                        </div>
+                        <small style="color: #a94442; display: block; margin-top: 8px; font-weight: bold;">⚠️ Debés aceptar los términos para enviar la reserva.</small>
                     </div>
-                    <button type="submit" class="btn-enviar" style="margin-top:1.5rem;">⛺ ENVIAR RESERVA</button>
-                    <div id="mensajeEnvio" style="margin-top:15px;text-align:center;font-weight:bold;"></div>
+                    
+                    <button type="submit" class="btn-enviar" style="margin-top: 1.5rem;">⛺ ENVIAR RESERVA</button>
+                    <div id="mensajeEnvio" style="margin-top:15px; text-align:center; font-weight:bold;"></div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE TESTIMONIO (YA EXISTENTE) -->
+    <!-- MODAL DE TESTIMONIO -->
     <div id="modalTestimonio" class="modal">
         <div class="modal-content">
             <div class="modal-close" id="cerrarTestimonio">&times;</div>
@@ -272,95 +369,28 @@
         const fi = document.getElementById('comprobante'); if(fi&&fi.files.length>0){ const f=fi.files[0]; const b64=await new Promise(r=>{ const rd=new FileReader(); rd.onload=e=>r(e.target.result.split(',')[1]); rd.readAsDataURL(f); }); datos.comprobante=b64; datos.comprobanteFilename=f.name; datos.comprobanteMimeType=f.type; } else { datos.comprobante=''; datos.comprobanteFilename=''; datos.comprobanteMimeType=''; }
         try { await fetch(URL_SCRIPT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(datos)}); mensaje.textContent='✅ ¡Reserva enviada con éxito!'; mensaje.style.color='#2d4a22'; form.reset(); actualizarNombres(); document.getElementById('aceptoTerminos').checked=false; setTimeout(()=>{document.getElementById('modalFormulario').style.display='none';document.body.style.overflow='auto';},2500); } catch(error){ mensaje.textContent='❌ Error: '+error.message; mensaje.style.color='#a94442'; } }); }
 
-    // =========================================
-    // TESTIMONIOS DINÁMICOS
-    // =========================================
+    // TESTIMONIOS
     let testimonios = [], currentIndex = 0, autoInterval;
-
-    async function cargarTestimonios() {
-        try {
-            const response = await fetch(URL_SCRIPT + '?action=testimonios');
-            const data = await response.json();
-            if (data.success && data.testimonios.length > 0) {
-                testimonios = data.testimonios;
-            } else {
-                testimonios = [];
-            }
-            renderCarrusel();
-            iniciarAuto();
-        } catch (error) {
-            testimonios = [];
-            renderCarrusel();
-        }
-    }
-
-    function renderCarrusel() {
-        const track = document.getElementById('carruselTrack');
-        const puntos = document.getElementById('puntos');
-        if (!track) return;
-        track.innerHTML = '';
-        puntos.innerHTML = '';
-        if (testimonios.length === 0) {
-            track.innerHTML = '<div class="testimonio-card"><p>¡Sé el primero en dejar tu testimonio!</p><div class="autor">- Campamento Aventura -</div></div>';
-            return;
-        }
-        testimonios.forEach((t, i) => {
-            const div = document.createElement('div');
-            div.className = 'testimonio-card';
-            const fechaTexto = t.fecha ? new Date(t.fecha).toLocaleDateString() : '';
-            div.innerHTML = `<p>${t.comentario}</p><div class="calificacion">${t.calificacion || "⭐⭐⭐⭐⭐"}</div><div class="autor">- ${t.nombre} -</div><div class="fecha">${fechaTexto}</div>`;
-            track.appendChild(div);
-            const punto = document.createElement('div');
-            punto.className = 'punto';
-            punto.onclick = () => irTestimonio(i);
-            puntos.appendChild(punto);
-        });
-        actualizarPuntos();
-        irTestimonio(0);
-    }
-
+    async function cargarTestimonios() { try { const response = await fetch(URL_SCRIPT + '?action=testimonios'); const data = await response.json(); if (data.success && data.testimonios.length > 0) { testimonios = data.testimonios; } else { testimonios = []; } renderCarrusel(); iniciarAuto(); } catch (error) { testimonios = []; renderCarrusel(); } }
+    function renderCarrusel() { const track = document.getElementById('carruselTrack'); const puntos = document.getElementById('puntos'); if (!track) return; track.innerHTML = ''; puntos.innerHTML = ''; if (testimonios.length === 0) { track.innerHTML = '<div class="testimonio-card"><p>¡Sé el primero en dejar tu testimonio!</p><div class="autor">- Campamento Aventura -</div></div>'; return; } testimonios.forEach((t, i) => { const div = document.createElement('div'); div.className = 'testimonio-card'; const fechaTexto = t.fecha ? new Date(t.fecha).toLocaleDateString() : ''; div.innerHTML = `<p>${t.comentario}</p><div class="calificacion">${t.calificacion || "⭐⭐⭐⭐⭐"}</div><div class="autor">- ${t.nombre} -</div><div class="fecha">${fechaTexto}</div>`; track.appendChild(div); const punto = document.createElement('div'); punto.className = 'punto'; punto.onclick = () => irTestimonio(i); puntos.appendChild(punto); }); actualizarPuntos(); irTestimonio(0); }
     function actualizarPuntos() { document.querySelectorAll('.punto').forEach((p, i) => { p.classList.toggle('activo', i === currentIndex); }); }
     function irTestimonio(index) { if (testimonios.length === 0) return; currentIndex = (index + testimonios.length) % testimonios.length; const track = document.getElementById('carruselTrack'); if (track) track.style.transform = `translateX(-${currentIndex * 100}%)`; actualizarPuntos(); reiniciarAuto(); }
-    function siguiente() { irTestimonio(currentIndex + 1); }
-    function anterior() { irTestimonio(currentIndex - 1); }
+    function siguiente() { irTestimonio(currentIndex + 1); } function anterior() { irTestimonio(currentIndex - 1); }
     function iniciarAuto() { if (autoInterval) clearInterval(autoInterval); if (testimonios.length > 0) autoInterval = setInterval(siguiente, 5000); }
     function reiniciarAuto() { if (autoInterval) clearInterval(autoInterval); if (testimonios.length > 0) autoInterval = setInterval(siguiente, 5000); }
-
-    document.getElementById('prevBtn')?.addEventListener('click', anterior);
-    document.getElementById('nextBtn')?.addEventListener('click', siguiente);
-
+    document.getElementById('prevBtn')?.addEventListener('click', anterior); document.getElementById('nextBtn')?.addEventListener('click', siguiente);
     const modalTestimonio = document.getElementById('modalTestimonio');
     document.getElementById('btnDejarTestimonio')?.addEventListener('click', () => { modalTestimonio.style.display = 'block'; document.body.style.overflow = 'hidden'; });
     document.getElementById('cerrarTestimonio')?.addEventListener('click', () => { modalTestimonio.style.display = 'none'; document.body.style.overflow = 'auto'; });
-
-    document.getElementById('formTestimonio')?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const mensajeTestimonio = document.getElementById('mensajeTestimonio');
-        mensajeTestimonio.textContent = '⏳ Enviando...';
-        const datos = new URLSearchParams();
-        datos.append('action', 'testimonio');
-        datos.append('nombre', document.getElementById('testNombre').value);
-        datos.append('calificacion', document.getElementById('testCalificacion').value);
-        datos.append('comentario', document.getElementById('testComentario').value);
-        try {
-            await fetch(URL_SCRIPT, { method: 'POST', body: datos });
-            mensajeTestimonio.textContent = '✅ ¡Gracias por tu testimonio!';
-            document.getElementById('formTestimonio').reset();
-            setTimeout(() => { modalTestimonio.style.display = 'none'; document.body.style.overflow = 'auto'; cargarTestimonios(); }, 2000);
-        } catch (error) { mensajeTestimonio.textContent = '❌ Error'; }
-    });
-
+    document.getElementById('formTestimonio')?.addEventListener('submit', async (e) => { e.preventDefault(); const mensajeTestimonio = document.getElementById('mensajeTestimonio'); mensajeTestimonio.textContent = '⏳ Enviando...'; const datos = new URLSearchParams(); datos.append('action', 'testimonio'); datos.append('nombre', document.getElementById('testNombre').value); datos.append('calificacion', document.getElementById('testCalificacion').value); datos.append('comentario', document.getElementById('testComentario').value); try { await fetch(URL_SCRIPT, { method: 'POST', body: datos }); mensajeTestimonio.textContent = '✅ ¡Gracias por tu testimonio!'; document.getElementById('formTestimonio').reset(); setTimeout(() => { modalTestimonio.style.display = 'none'; document.body.style.overflow = 'auto'; cargarTestimonios(); }, 2000); } catch (error) { mensajeTestimonio.textContent = '❌ Error'; } });
     window.addEventListener('click', (e) => { if (e.target === modalTestimonio) { modalTestimonio.style.display = 'none'; document.body.style.overflow = 'auto'; } });
-
     cargarTestimonios();
 
-    // Modales y lightbox
     const modalContratar = document.getElementById('modalFormulario');
     document.getElementById('btnContratarHero')?.addEventListener('click', () => { modalContratar.style.display = 'block'; document.body.style.overflow = 'hidden'; });
     document.getElementById('btnContratarNav')?.addEventListener('click', () => { modalContratar.style.display = 'block'; document.body.style.overflow = 'hidden'; });
     document.getElementById('cerrarModal')?.addEventListener('click', () => { modalContratar.style.display = 'none'; document.body.style.overflow = 'auto'; });
     window.onclick = (e) => { if (e.target === modalContratar) { modalContratar.style.display = 'none'; document.body.style.overflow = 'auto'; } };
-
     function abrirLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
     function cerrarLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = 'auto'; }
 </script>
